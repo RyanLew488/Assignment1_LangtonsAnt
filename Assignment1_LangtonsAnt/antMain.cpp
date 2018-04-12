@@ -1,4 +1,5 @@
 #include <iostream>
+#include "ant.hpp"
 #include "intValidation.hpp"
 
 
@@ -14,6 +15,7 @@ int main() {
 	int num2 = iRangeValidation(message2, 0, 100);
 
 	std::cout << "You entered: " << num2 << std::endl;
+	
 
 	std::cin.get();
 	
