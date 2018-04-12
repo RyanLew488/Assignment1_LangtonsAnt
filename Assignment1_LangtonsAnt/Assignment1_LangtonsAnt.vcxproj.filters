@@ -18,5 +18,19 @@
     <ClCompile Include="antMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="intValidation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ant.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ant.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="intValidation.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

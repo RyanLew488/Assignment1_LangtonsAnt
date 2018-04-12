@@ -115,7 +115,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ant.cpp" />
     <ClCompile Include="antMain.cpp" />
+    <ClCompile Include="intValidation.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ant.hpp" />
+    <ClInclude Include="intValidation.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
