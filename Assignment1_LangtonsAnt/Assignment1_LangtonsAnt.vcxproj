@@ -117,11 +117,11 @@
   <ItemGroup>
     <ClCompile Include="ant.cpp" />
     <ClCompile Include="antMain.cpp" />
-    <ClCompile Include="intValidation.cpp" />
+    <ClCompile Include="helperFunctions.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ant.hpp" />
-    <ClInclude Include="intValidation.hpp" />
+    <ClInclude Include="helperFunctions.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,27 +1,37 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 #include "ant.hpp"
-#include "intValidation.hpp"
+#include "helperFunctions.hpp"
 
 
 int main() {
 
-	int num = 0;
-	std::string message = "Please enter a integer";
-	num = iValidation(message);
+	bool gameLoop = true;
 
-	std::cout << "You entered: " << num << std::endl;
+	while (gameLoop) {
 
-	std::string message2 = "Please enter a integer between 0 and 100";
-	int num2 = iRangeValidation(message2, 0, 100);
+		int cont = 0;
+		int random = 0;
+		int turns = 0;
+		int bHeight = 0;
+		int bWidth = 0;
+		int startX = 1, startY = 1;
 
-	std::cout << "You entered: " << num2 << std::endl;
-	
-	Ant test;
-	int** newBoard;
+		int** gameBoard;
+		
+		menu(cont, random, bHeight, bWidth, turns);
+		if (cont == 0) {
+			gameLoop = false;
+		}
+		else {
 
-	test.createBoard(10, 10);
-	test.fillBoard(10, 10);
-	test.printBoard();
+			if (random = 0) {
+
+			}
+			Ant game(gameBoard, bHeight, bWidth, startX, startY);
+		}
+	}
 
 	std::cin.get();
 	

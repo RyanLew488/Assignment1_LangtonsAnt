@@ -18,10 +18,10 @@
     <ClCompile Include="antMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="intValidation.cpp">
+    <ClCompile Include="ant.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ant.cpp">
+    <ClCompile Include="helperFunctions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -29,7 +29,7 @@
     <ClInclude Include="ant.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="intValidation.hpp">
+    <ClInclude Include="helperFunctions.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

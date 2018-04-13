@@ -1,3 +1,4 @@
+#include "helperFunctions.hpp"
 #ifndef ANT_HPP
 #define ANT_HPP
 
@@ -14,7 +15,7 @@ private:
 public:
 	Ant();
 	Ant(int** boardPtr, int h, int w, int x, int y);
-	void menu();
+	void menu(int& choice, int& randomStart, int& turns);
 	void setStartPos(int x, int y);
 	void createBoard(int height, int width);
 	void fillBoard(int height, int width);

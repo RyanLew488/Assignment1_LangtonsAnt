@@ -53,6 +53,8 @@ void Ant::printBoard() {
 		std::cout << std::endl;
 	}
 }
+
+
 void Ant::setStartPos (int x, int y){
 
 	xPos = x;
@@ -143,3 +145,6 @@ void Ant::moveForward() {
 	}
 }
 
+Ant::deallocate() {
+
+}
