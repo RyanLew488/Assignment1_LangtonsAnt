@@ -16,8 +16,8 @@ public:
 	Ant(int** boardPtr, int h, int w, int x, int y);
 	void menu();
 	void setStartPos(int x, int y);
-	int** createBoard(int height, int width);
-	void fillBoard();
+	void createBoard(int height, int width);
+	void fillBoard(int height, int width);
 	void turn();
 	void changeState();
 	void moveForward();

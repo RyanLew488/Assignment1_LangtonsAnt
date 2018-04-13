@@ -16,6 +16,12 @@ int main() {
 
 	std::cout << "You entered: " << num2 << std::endl;
 	
+	Ant test;
+	int** newBoard;
+
+	test.createBoard(10, 10);
+	test.fillBoard(10, 10);
+	test.printBoard();
 
 	std::cin.get();
 	

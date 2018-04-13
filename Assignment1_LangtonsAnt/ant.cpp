@@ -2,11 +2,16 @@
 #include "ant.hpp"
 
 Ant::Ant() {
-	board = createBoard(10, 10);
+	createBoard(10,10);
+	boardHeight = 10;
+	boardWidth = 10;
+	xPos = 1;
+	yPos = 1;
+	direction = 0;
 }
 
 Ant::Ant(int** boardPtr, int h, int w, int x, int y) {
-	board = boardPtr;
+	createBoard(h, w);
 	boardHeight = h;
 	boardWidth = w;
 	xPos = x;
@@ -14,16 +19,15 @@ Ant::Ant(int** boardPtr, int h, int w, int x, int y) {
 	direction = 0;
 }
 
-int** Ant::createBoard(int height, int width) {
+void Ant::createBoard(int height, int width) {
 
 	board = new int*[height];
 	for (int i = 0; i < width; i++) {
 		board[i] = new int[width];
 	}
-	return board;
 }
 
-void fillBoard(int** board, int height, int width) {
+void Ant::fillBoard(int height, int width) {
 	for (int i = 0; i < height; i++) {
 
 		for (int j = 0; j < width; j++) {
@@ -36,7 +40,15 @@ void Ant::printBoard() {
 	std::cout << "Printing the board";
 	for (int i = 0; i < boardHeight; i++) {
 		for (int j = 0; j < boardWidth; j++) {
-			std::cout << board[i][j];
+			if (i == xPos && j == yPos) {
+				std::cout << "*";
+			}
+			else if (squareState == 0) {
+				std::cout << " ";
+			}
+			else {
+				std::cout << "#";
+			}
 		}
 		std::cout << std::endl;
 	}

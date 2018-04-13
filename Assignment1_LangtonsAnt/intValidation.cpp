@@ -7,8 +7,6 @@ int iValidation(std::string message) {
 	int validInteger = 0;
 	std::string input = "";
 	
-	
-
 	do {
 		std::cout << message << std::endl;
 		std::getline(std::cin, input);
