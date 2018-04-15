@@ -2,7 +2,7 @@
 #include <sstream>
 #include <string>
 
-int iValidation(std::string message) {
+int iValid(std::string message) {
 	bool valid = false;
 	int validInteger = 0;
 	std::string input = "";
@@ -21,7 +21,7 @@ int iValidation(std::string message) {
 	return validInteger;
 }
 
-int iRangeValidation(std::string message, int lowerBound, int upperBound) {
+int iRangeValid(std::string message, int lowerBound, int upperBound) {
 	bool valid = false;
 	int validInteger = 0;
 	std::string input = "";
@@ -54,23 +54,33 @@ void menu(int& choice, int& randomStart, int& h, int& w, int& turns) {
 
 	std::string m = "Please enter your choice";
 
-	int gameChoice = iRangeValidation(m, 0, 1);
+	int gameChoice = iRangeValid(m, 0, 1);
 	choice = gameChoice;
 
-	std::cout << "How tall would you like the board?\n";
-	m = "Please enter a positive integer < 5 and > 100";
-	h = iRangeValidation(m, 5, 100);
+	if (gameChoice == 1) {
 
-	std::cout << "How wide would you like the board?\n";
-	w = iRangeValidation(m, 5, 100);
+		std::cout << "How tall would you like the board?\n";
+		m = "Please enter a positive integer < 5 and > 100";
+		h = iRangeValid(m, 5, 100);
 
-	std::cout << "Would you like to specify a starting point?\n"
-			  << "0 for player choice\n1 for random";
+		std::cout << "How wide would you like the board?\n";
+		w = iRangeValid(m, 5, 100);
 
-	int startChoice = iRangeValidation(m, 0, 1);
-	randomStart = startChoice;
+		std::cout << "Would you like to specify a starting point?\n"
+			<< "0 for no (random start)\n1 for yes";
 
-	m = "Please select between 0 and 50,000 turns";
-	int numTurns = iRangeValidation(m, 10, 50000);
-	turns = numTurns;
+		int startChoice = iRangeValid(m, 0, 1);
+		randomStart = startChoice;
+
+		m = "Please select between 0 and 50,000 turns";
+		int numTurns = iRangeValid(m, 10, 50000);
+		turns = numTurns;
+	}
+	else {
+		return;
+	}
+}
+
+void mainMenu(int& play) {
+
 }

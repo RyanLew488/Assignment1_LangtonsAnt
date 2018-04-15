@@ -10,44 +10,49 @@ Ant::Ant() {
 	direction = 0;
 }
 
-Ant::Ant(int** boardPtr, int h, int w, int x, int y) {
-	createBoard(h, w);
+Ant::Ant(int h, int w, int x, int y) {
+	createBoard((h + 2), (w + 2));
 	boardHeight = h;
 	boardWidth = w;
-	xPos = x;
-	yPos = y;
+	setStartPos(x, y);
 	direction = 0;
 }
 
-void Ant::createBoard(int height, int width) {
+void Ant::createBoard(int row, int col) {
 
-	board = new int*[height];
-	for (int i = 0; i < width; i++) {
-		board[i] = new int[width];
+	board = new int*[row];
+	for (int i = 0; i < row; i++) {
+		board[i] = new int[col];
 	}
 }
 
 void Ant::fillBoard(int height, int width) {
-	for (int i = 0; i < height; i++) {
+	for (int row = 0; row < height + 1; row++) {
 
-		for (int j = 0; j < width; j++) {
-			board[i][j] = 0;
+		for (int col = 0; col < width + 1 ; col++) {
+			board[row][col] = 0;
 		}
 	}
 }
 
 void Ant::printBoard() {
-	std::cout << "Printing the board";
-	for (int i = 0; i < boardHeight; i++) {
-		for (int j = 0; j < boardWidth; j++) {
-			if (i == xPos && j == yPos) {
+
+	for (int i = 0; i < boardHeight + 1; i++) {
+		for (int j = 0; j < boardWidth + 1; j++) {
+			if (i == 0 || i == boardHeight) {
+				std::cout << "_";
+			}
+			else if (j == 0 || j == boardWidth ) {
+				std::cout << "|";
+			}
+			else if (i == yPos && j == xPos) {
 				std::cout << "*";
 			}
-			else if (squareState == 0) {
-				std::cout << " ";
+			else if (board[i][j] == 0) {
+				std::cout << "0";
 			}
 			else {
-				std::cout << "#";
+				std::cout << "1";
 			}
 		}
 		std::cout << std::endl;
@@ -55,56 +60,58 @@ void Ant::printBoard() {
 }
 
 
-void Ant::setStartPos (int x, int y){
+void Ant::setStartPos (int x, int y) {
 
 	xPos = x;
 	yPos = y;
 }
 
 void Ant::turn() {
-	if (squareState == 0) {
 
-		if (direction >= 3) {
+	if (board[yPos][xPos] == 0) {
+
+		direction++;
+		if (direction > 3) {
 
 			direction = 0;
 		}
-		else {
-
-			direction++;
-		}
-	}
-	else {
 		
-		if (direction <= 0) {
+	}
+
+	else {
+		 
+		direction--;
+		if (direction < 0) {
 
 			direction = 3;
 		}
-		else {
-
-			direction--;
-		}
+		
 	}
 }
 
 void Ant::changeState() {
-	if (squareState == 0) {
 
-		squareState = 1;
+	if (board[yPos][xPos] == 0) {
+
+		board[yPos][xPos] = 1;
 	}
-	else {
 
-		squareState = 0;
+	else /*if (board[yPos][xPos] == 1)*/ {
+
+		board[yPos][xPos] = 0;
 	}
 }
 
 void Ant::moveForward() {
-
+	
 	switch (direction) {
 
 	case 0 :
-		if (yPos == 1) {
+
+		if (yPos <= 1) {
 
 			yPos == boardHeight;
+
 		}
 		else {
 
@@ -114,21 +121,24 @@ void Ant::moveForward() {
 
 	case 1 :
 
-		if (xPos == boardWidth) {
+		if (xPos >= boardWidth) {
 
 			xPos = 1;
 		}
 		else {
+
 			xPos++;
 		}
 		break;
 
 	case 2 :
 
-		if (yPos == boardHeight) {
+		if (yPos >= boardHeight) {
+
 			yPos = 1;
 		}
 		else {
+
 			yPos++;
 		}
 		break;
@@ -136,15 +146,17 @@ void Ant::moveForward() {
 	case 3 :
 
 		if (xPos == 1) {
-			xPos == boardWidth;
+
+			xPos <= boardWidth;
 		}
 		else {
+
 			xPos--;
 		}
 		break;
 	}
 }
 
-Ant::deallocate() {
+void Ant::deallocate() {
 
 }
