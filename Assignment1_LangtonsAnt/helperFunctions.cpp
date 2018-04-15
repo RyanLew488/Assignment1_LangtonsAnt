@@ -65,22 +65,18 @@ void menu(int& choice, int& randomStart, int& h, int& w, int& turns) {
 
 		std::cout << "How wide would you like the board?\n";
 		w = iRangeValid(m, 5, 100);
-
-		std::cout << "Would you like to specify a starting point?\n"
-			<< "0 for no (random start)\n1 for yes";
-
-		int startChoice = iRangeValid(m, 0, 1);
-		randomStart = startChoice;
+		
 
 		m = "Please select between 0 and 50,000 turns";
 		int numTurns = iRangeValid(m, 10, 50000);
 		turns = numTurns;
+
+		std::cout << "Would you like to specify a starting point?\n"
+				  << "1 for yes\n0 for no (random start)";
+		int startChoice = iRangeValid("", 0, 1);
+		randomStart = startChoice;
 	}
 	else {
 		return;
 	}
-}
-
-void mainMenu(int& play) {
-
 }

@@ -35,23 +35,25 @@ int main() {
 			}
 			else {
 
-				startX = iRangeValid("Please select your starting X position: ", 1, bWidth);
-				startY = iRangeValid("Please select your starting Y position: ", 1, bHeight);
+				startX = iRangeValid("Please select your starting X position: ", 0, (bWidth - 1));
+				startY = iRangeValid("Please select your starting Y position: ", 0, (bHeight - 1));
 			}
 
 			Ant game(bHeight, bWidth, startX, startY);
 			
 			game.fillBoard(bHeight, bWidth);
 			game.printBoard();
+
 			for (int c = 0; c < turns; c++) {
 				
 				game.turn();
 				game.changeState();
 				game.moveForward();
 				game.printBoard();
+
 			}
+			game.deallocate();
 		}
 	}
-	std::cin.get();
 	return 0;
 }

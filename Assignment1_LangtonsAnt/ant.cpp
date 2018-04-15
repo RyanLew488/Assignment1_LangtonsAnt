@@ -11,7 +11,7 @@ Ant::Ant() {
 }
 
 Ant::Ant(int h, int w, int x, int y) {
-	createBoard((h + 2), (w + 2));
+	createBoard(h, w);
 	boardHeight = h;
 	boardWidth = w;
 	setStartPos(x, y);
@@ -27,32 +27,26 @@ void Ant::createBoard(int row, int col) {
 }
 
 void Ant::fillBoard(int height, int width) {
-	for (int row = 0; row < height + 1; row++) {
+	for (int row = 0; row < height; row++) {
 
-		for (int col = 0; col < width + 1 ; col++) {
+		for (int col = 0; col < width; col++) {
 			board[row][col] = 0;
 		}
 	}
 }
 
 void Ant::printBoard() {
-
-	for (int i = 0; i < boardHeight + 1; i++) {
-		for (int j = 0; j < boardWidth + 1; j++) {
-			if (i == 0 || i == boardHeight) {
-				std::cout << "_";
-			}
-			else if (j == 0 || j == boardWidth ) {
-				std::cout << "|";
-			}
-			else if (i == yPos && j == xPos) {
+	
+	for (int i = 0; i < boardHeight; i++) {
+		for (int j = 0; j < boardWidth; j++) {
+			if (i == yPos && j == xPos) {
 				std::cout << "*";
 			}
 			else if (board[i][j] == 0) {
-				std::cout << "0";
+				std::cout << " ";
 			}
 			else {
-				std::cout << "1";
+				std::cout << "#";
 			}
 		}
 		std::cout << std::endl;
@@ -71,6 +65,7 @@ void Ant::turn() {
 	if (board[yPos][xPos] == 0) {
 
 		direction++;
+
 		if (direction > 3) {
 
 			direction = 0;
@@ -81,6 +76,7 @@ void Ant::turn() {
 	else {
 		 
 		direction--;
+
 		if (direction < 0) {
 
 			direction = 3;
@@ -96,7 +92,7 @@ void Ant::changeState() {
 		board[yPos][xPos] = 1;
 	}
 
-	else /*if (board[yPos][xPos] == 1)*/ {
+	else {
 
 		board[yPos][xPos] = 0;
 	}
@@ -106,11 +102,12 @@ void Ant::moveForward() {
 	
 	switch (direction) {
 
+	//Moving to the top (North)
 	case 0 :
 
-		if (yPos <= 1) {
+		if (yPos == 0) {
 
-			yPos == boardHeight;
+			yPos = boardHeight - 1;
 
 		}
 		else {
@@ -119,23 +116,25 @@ void Ant::moveForward() {
 		}
 		break;
 
+	//Moving to the right (East)
 	case 1 :
 
-		if (xPos >= boardWidth) {
+		if (xPos == boardWidth - 1) {
 
-			xPos = 1;
+			xPos = 0;
 		}
 		else {
 
 			xPos++;
 		}
 		break;
-
+	
+	//Moving to the bottom (South)
 	case 2 :
 
-		if (yPos >= boardHeight) {
+		if (yPos == boardHeight - 1) {
 
-			yPos = 1;
+			yPos = 0;
 		}
 		else {
 
@@ -143,11 +142,12 @@ void Ant::moveForward() {
 		}
 		break;
 
+	//Moving to the left (West)
 	case 3 :
 
-		if (xPos == 1) {
+		if (xPos == 0) {
 
-			xPos <= boardWidth;
+			xPos = boardWidth - 1;
 		}
 		else {
 
@@ -158,5 +158,8 @@ void Ant::moveForward() {
 }
 
 void Ant::deallocate() {
-
+	for (int row = 0; row < boardWidth; row++) {
+		delete[]board[row];
+	}
+	delete[]board;
 }
